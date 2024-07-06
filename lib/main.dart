@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:food_go/authentication/login_page.dart';
+import 'package:food_go/authentication/sign_up_page.dart';
+import 'package:food_go/home_page.dart';
 import 'package:food_go/splash_screen.dart';
 
 Future main() async {
@@ -27,14 +30,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return
+    //   MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   title: 'Flutter Demo',
+    //   theme: ThemeData(
+    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    //     useMaterial3: true,
+    //   ),
+    //   home: splash_screen(),
+    // );
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: splash_screen(),
+      routes: {
+        '/': (context) => const splash_screen(
+
+          child: home_page(),
+        ),
+        '/login': (context) => const login_page(),
+        '/signUp': (context) => const sign_up_page(),
+        '/home': (context) => const home_page(),
+
+      }, //dashboard
     );
   }
 }
