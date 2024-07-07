@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,37 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return
+    bool isLoggedIn = FirebaseAuth.instance.currentUser != null ? true : false;
+    if (isLoggedIn) { // if user is logged in, open dashboard
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => const splash_screen(
+
+            child: home_page(),
+          ),
+          '/login': (context) => const login_page(),
+          '/signUp': (context) => const sign_up_page(),
+          '/home': (context) => const home_page(),
+
+        }, //dashboard
+      );
+    } else {// if user isn't logged in, open login page
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => const splash_screen(
+
+            child: login_page(),
+          ),
+          '/login': (context) => const login_page(),
+          '/signUp': (context) => const sign_up_page(),
+          '/home': (context) => const home_page(),
+
+        }, //login page
+      );
+    }
+    // return
     //   MaterialApp(
     //   debugShowCheckedModeBanner: false,
     //   title: 'Flutter Demo',
@@ -40,18 +71,18 @@ class MyApp extends StatelessWidget {
     //   ),
     //   home: splash_screen(),
     // );
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (context) => const splash_screen(
-
-          child: home_page(),
-        ),
-        '/login': (context) => const login_page(),
-        '/signUp': (context) => const sign_up_page(),
-        '/home': (context) => const home_page(),
-
-      }, //dashboard
-    );
+    // MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   routes: {
+    //     '/': (context) => const splash_screen(
+    //
+    //       child: home_page(),
+    //     ),
+    //     '/login': (context) => const login_page(),
+    //     '/signUp': (context) => const sign_up_page(),
+    //     '/home': (context) => const home_page(),
+    //
+    //   }, //dashboard
+    // );
   }
 }

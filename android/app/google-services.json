@@ -12,7 +12,20 @@
           "package_name": "com.example.food_go"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "301258823049-8fkmjg7q0n5kktlp39oa3bj46ls3b1hl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_go",
+            "certificate_hash": "fc988bfbc1d318c44037efdd4a1c36b8a71dbd04"
+          }
+        },
+        {
+          "client_id": "301258823049-cf6ahshu1ttnajg9nhge7r2og40ngam2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDOcisThBw-Vs3P-RhJrxWEDq8LJKI7AAQ"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301258823049-cf6ahshu1ttnajg9nhge7r2og40ngam2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

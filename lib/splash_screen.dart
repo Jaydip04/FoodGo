@@ -12,21 +12,31 @@ class splash_screen extends StatefulWidget {
 
 class _splash_screenState extends State<splash_screen> {
   @override
-  // void initState() {
-  //   Future.delayed(
-  //     const Duration(seconds: 5),(){
-  //     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget.child!), (route) => false);
-  //   }
-  //   );
-  //   super.initState();
-  // }
+  void initState() {
+    Future.delayed(
+      const Duration(seconds: 5),(){
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget.child!), (route) => false);
+    }
+    );
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: <Color>[
+              Colors.pinkAccent.shade100,
+              Colors.pink
+            ],
+          ),
+        ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.pinkAccent,
+
         child:Stack(
           children: <Widget>[
             Positioned.fill(

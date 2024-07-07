@@ -34,8 +34,8 @@ class _form_container_widgetState extends State<form_container_widget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: Colors.black,
-      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      cursorColor: Colors.white,
+      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       controller: widget.controller,
       keyboardType: widget.inputType,
       key: widget.fieldKey,
@@ -48,15 +48,15 @@ class _form_container_widgetState extends State<form_container_widget> {
         filled: true,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.black, width: 2.5),
+          borderSide: const BorderSide(color: Colors.white, width: 2.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.black, width: 1),
+          borderSide: const BorderSide(color: Colors.white, width: 1),
         ),
         hintText: widget.hintText,
         hintStyle:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         suffixIcon: GestureDetector(
           onTap: () {
             setState(() {
@@ -66,7 +66,7 @@ class _form_container_widgetState extends State<form_container_widget> {
           child: widget.isPasswordField == true
               ? Icon(
                   _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: _obscureText == false ? Colors.black : Colors.grey,
+                  color: _obscureText == false ? Colors.white : Colors.white70,
                 )
               : const Text(""),
         ),
