@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_go/common/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class splash_screen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _splash_screenState extends State<splash_screen> {
   @override
   void initState() {
     Future.delayed(
-      const Duration(seconds: 5),(){
+      const Duration(seconds: 1),(){
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget.child!), (route) => false);
     }
     );
@@ -29,8 +30,8 @@ class _splash_screenState extends State<splash_screen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: <Color>[
-              Colors.pinkAccent.shade100,
-              Colors.pink
+              constants.my_secondary,
+              constants.my_primary,
             ],
           ),
         ),

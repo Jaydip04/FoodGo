@@ -4,8 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_go/authentication/login_page.dart';
 import 'package:food_go/authentication/sign_up_page.dart';
-import 'package:food_go/home_page.dart';
-import 'package:food_go/splash_screen.dart';
+import 'package:food_go/pages/add_item_page.dart';
+import 'package:food_go/pages/chat_page.dart';
+import 'package:food_go/pages/favorite_page.dart';
+import 'package:food_go/pages/home_page.dart';
+import 'package:food_go/pages/profile_page.dart';
+import 'package:food_go/splash_screen/splash_screen.dart';
+import 'package:food_go/widget_tree.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,11 +44,15 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const splash_screen(
 
-            child: home_page(),
+            child: widget_tree(),
           ),
           '/login': (context) => const login_page(),
           '/signUp': (context) => const sign_up_page(),
           '/home': (context) => const home_page(),
+          '/profile': (context) => const profile_page(),
+          '/add_item': (context) => const add_item_page(),
+          '/chat': (context) => const chat_page(),
+          '/favorite': (context) => const favorite_page(),
 
         }, //dashboard
       );
@@ -57,6 +67,10 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const login_page(),
           '/signUp': (context) => const sign_up_page(),
           '/home': (context) => const home_page(),
+          '/profile': (context) => const profile_page(),
+          '/add_item': (context) => const add_item_page(),
+          '/chat': (context) => const chat_page(),
+          '/favorite': (context) => const favorite_page(),
 
         }, //login page
       );
@@ -69,7 +83,7 @@ class MyApp extends StatelessWidget {
     //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
     //     useMaterial3: true,
     //   ),
-    //   home: splash_screen(),
+    //   home: AllProductsScreen(),
     // );
     // MaterialApp(
     //   debugShowCheckedModeBanner: false,

@@ -3,8 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:food_go/authentication/login_page.dart';
 import 'package:food_go/common/form_container_widget.dart';
 import 'package:food_go/common/toast.dart';
-import 'package:food_go/home_page.dart';
+import 'package:food_go/pages/home_page.dart';
+import 'package:food_go/widget_tree.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../common/constants.dart';
 import 'firebase_auth_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,8 @@ class _sign_up_pageState extends State<sign_up_page> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: <Color>[Colors.pinkAccent.shade100, Colors.pink],
+                colors: <Color>[constants.my_secondary,
+                  constants.my_primary,],
               ),
             ),
             height: MediaQuery.of(context).size.height,
@@ -208,7 +211,7 @@ class _sign_up_pageState extends State<sign_up_page> {
     if (user != null) {
       show_toast(message: "User is successfully created");
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => home_page()),
+          MaterialPageRoute(builder: (context) => widget_tree()),
           (Route<dynamic> route) => false);
     } else {
       show_toast(message: "Some error happend");

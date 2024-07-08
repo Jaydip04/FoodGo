@@ -5,10 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_go/authentication/firebase_auth_services.dart';
 import 'package:food_go/authentication/sign_up_page.dart';
 import 'package:food_go/common/toast.dart';
-import 'package:food_go/home_page.dart';
+import 'package:food_go/pages/home_page.dart';
+import 'package:food_go/widget_tree.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../common/constants.dart';
 import '../common/form_container_widget.dart';
 
 class login_page extends StatefulWidget {
@@ -41,7 +43,8 @@ class _login_pageState extends State<login_page> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: <Color>[Colors.pinkAccent.shade100, Colors.pink],
+                colors: <Color>[constants.my_secondary,
+                  constants.my_primary,],
               ),
             ),
             height: MediaQuery.of(context).size.height,
@@ -232,7 +235,7 @@ class _login_pageState extends State<login_page> {
     if (user != null) {
       show_toast(message: "User is successfully signed in");
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-          home_page()), (Route<dynamic> route) => false);
+          widget_tree()), (Route<dynamic> route) => false);
     } else {
       show_toast(message: "some error occured");
     }
