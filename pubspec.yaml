@@ -41,12 +41,16 @@ dependencies:
   firebase_auth: ^4.6.3
   google_sign_in: ^6.1.5
   fluttertoast: ^8.2.2
+  cloud_firestore: ^4.8.2
+  firebase_storage: ^11.2.4
   google_fonts: ^6.2.1
   font_awesome_flutter: ^10.7.0
   flutter_launcher_icons: ^0.13.1
   curved_navigation_bar: ^1.0.4
   flutter_riverpod: ^2.5.1
+  random_string: ^2.3.1
   favorite_button: ^0.0.4
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

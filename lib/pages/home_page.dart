@@ -1,9 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_go/common/constants.dart';
 import 'package:food_go/common/toast.dart';
+import 'package:food_go/pages/favorite_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:random_string/random_string.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../database/database_methods.dart';
 
 class home_page extends StatefulWidget {
   const home_page({super.key});
@@ -53,8 +59,7 @@ class _home_pageState extends State<home_page> {
     "4.9",
     "5.0",
   ];
-  List<String> favoriteDataList = [];
-  bool _obscureText = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,14 +91,14 @@ class _home_pageState extends State<home_page> {
                       show_toast(message: "message");
                     });
                   },
-                  child:ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                        child: Image.asset(
-                          "assets/profile_logo/profile_logo.png",
-                          width: 60,
-                          height: 60,
-                        ),
-                      ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    child: Image.asset(
+                      "assets/profile_logo/profile_logo.png",
+                      width: 60,
+                      height: 60,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -113,10 +118,10 @@ class _home_pageState extends State<home_page> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5,
-                      mainAxisExtent: 240
-                      ),
+                      mainAxisExtent: 240),
                   itemBuilder: ((context, index) {
                     return Card(
+                      elevation: 5,
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
@@ -144,7 +149,8 @@ class _home_pageState extends State<home_page> {
                               Row(
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         title[index],
@@ -171,7 +177,8 @@ class _home_pageState extends State<home_page> {
                                 height: 10,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     children: [
@@ -202,11 +209,56 @@ class _home_pageState extends State<home_page> {
                                       FavoriteButton(
                                         isFavorite: false,
                                         iconSize: 40,
-                                        iconColor:constants.my_primary,
-                                        valueChanged: (_isFavorite) {
+                                        iconColor: constants.my_primary,
+                                        valueChanged: (_isFavorite) async{
+                                          if(_isFavorite == true){
+
+                                            String id = randomAlphaNumeric(10);
+                                            Map<String, dynamic> favorite_info = {
+                                              "image_url": image_url[index],
+                                              "title": title[index],
+                                              "sub_title": sub_title[index],
+                                              "rating": rating[index],
+                                              "id": id,
+                                            };
+                                            DatabaseMethods()
+                                                .add_favorite_details(favorite_info, id)
+                                                .then((value) {
+                                              show_toast(message: "Add Favorite");
+                                              // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                              //     favorite_page()), (Route<dynamic> route) => false);
+                                            });
+                                          }else{
+
+                                          }
+
                                           print('Is Favorite : $_isFavorite');
                                         },
                                       ),
+                                      // FavoriteButton(
+                                      //   isFavorite: false,
+                                      //   iconSize: 40,
+                                      //   iconColor:constants.my_primary,
+                                      //   valueChanged: (_isFavorite) {
+                                      //     if(_isFavorite == true){
+                                      //       String id = randomAlphaNumeric(10);
+                                      //       Map<String, dynamic> favoriteInfoMap = {
+                                      //         "Id": id,
+                                      //       };
+                                      //       DatabaseMethods()
+                                      //           .addFavorite(favoriteInfoMap, id)
+                                      //           .then((value) {
+                                      //         FocusScope.of(context).unfocus();
+                                      //         show_toast(message: "add favorite has been uploaded successfully");
+                                      //         // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                      //         //     home()), (Route<dynamic> route) => false);
+                                      //       });
+                                      //     print('Is Favorite : $_isFavorite');
+                                      //     }else{
+                                      //     print('Is Favorite : $_isFavorite');
+                                      //     }
+                                      //   },
+                                      // ),
                                     ],
                                   ),
                                 ],
