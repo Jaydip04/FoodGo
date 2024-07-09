@@ -274,14 +274,7 @@ class _home_pageState extends State<home_page> {
             ),
           ),
         )
-        //   favoriteDataList.isEmpty
-        // ? const Center(
-        // child: Text(
-        //   'There are no favorites yet!',
-        //   style: TextStyle(color: Colors.black),
-        // ),
-        // )
-        // :
+
         //         // Scrollbar(
         //         //   thumbVisibility: true,
         //         //   trackVisibility: true,

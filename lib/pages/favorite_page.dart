@@ -185,7 +185,10 @@ class _favorite_pageState extends State<favorite_page> {
                                 ),
                               );
                             }))
-                        : Container();
+                        : Container(
+                      height: MediaQuery.of(context).size.height,
+                      child: Center(child: Text("Empty")),
+                    );
                   }),
             ],
           ),
